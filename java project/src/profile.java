@@ -6,12 +6,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
 public class profile extends JFrame {
@@ -22,22 +26,22 @@ public class profile extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					profile frame = new profile();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+//	EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					profile frame = new profile();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public profile() {
+	public profile(String Username) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 130, 750, 500);
 		 setResizable(false); 
@@ -96,7 +100,7 @@ public class profile extends JFrame {
 		Update_Profile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				Update_detail j=new Update_detail();
+				Update_detail j=new Update_detail(Username);
 				j.setVisible(true);
 			}
 		});
@@ -119,48 +123,78 @@ public class profile extends JFrame {
 		contentPane.add(Update_Profile_1);
 		
 		JLabel first_name = new JLabel();
-		first_name.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		first_name.setBounds(194, 129, 86, 14);
+		first_name.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		first_name.setBounds(194, 120, 189, 28);
 		contentPane.add(first_name);
 		
-		JLabel last_name = new JLabel("New label");
-		last_name.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		last_name.setBounds(194, 179, 86, 14);
+		JLabel last_name = new JLabel("");
+		last_name.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		last_name.setBounds(194, 170, 189, 28);
 		contentPane.add(last_name);
 		
-		JLabel mobile_no = new JLabel("New label");
-		mobile_no.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		mobile_no.setBounds(194, 226, 86, 14);
+		JLabel mobile_no = new JLabel("");
+		mobile_no.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		mobile_no.setBounds(194, 224, 211, 26);
 		contentPane.add(mobile_no);
 		
-		JLabel city = new JLabel("New label");
-		city.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		city.setBounds(194, 274, 86, 14);
-		contentPane.add(city);
+		JLabel City = new JLabel("");
+		City.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		City.setBounds(194, 261, 211, 37);
+		contentPane.add(City);
 		
-		JLabel User_name = new JLabel("New label");
-		User_name.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		User_name.setBounds(557, 129, 86, 14);
+		JLabel User_name = new JLabel("");
+		User_name.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		User_name.setBounds(557, 120, 167, 28);
+		User_name.setText(Username);
 		contentPane.add(User_name);
 		
-		JLabel Email_id = new JLabel("New label");
-		Email_id.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		Email_id.setBounds(557, 179, 86, 14);
+		JLabel Email_id = new JLabel("");
+		Email_id.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		Email_id.setBounds(557, 170, 167, 28);
 		contentPane.add(Email_id);
 		
-		JLabel state = new JLabel("New label");
-		state.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		state.setBounds(557, 226, 86, 14);
-		contentPane.add(state);
+		JLabel State = new JLabel("");
+		State.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		State.setBounds(557, 216, 167, 31);
+		contentPane.add(State);
 		
-		JLabel gender = new JLabel("New label");
-		gender.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		gender.setBounds(557, 274, 86, 14);
-		contentPane.add(gender);
+		JLabel Gender = new JLabel("");
+		Gender.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		Gender.setBounds(557, 265, 167, 28);
+		contentPane.add(Gender);
 	
 	     
+	
+			try {
+				
+				
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject","root","nilesh09@45");
+				Statement stmt=con.createStatement();
+				String sql="Select * from createaccount where username= '"+Username+"'";
+				ResultSet rs=stmt.executeQuery(sql);
+				while(rs.next()) {
+
+					User_name.setText(rs.getString("username"));
+					Email_id.setText(rs.getString("Email_ID"));
+					mobile_no.setText(rs.getString("Mobile Number"));
+					first_name.setText(rs.getString("First_name"));
+					last_name.setText(rs.getString("Last_name"));
+					Gender.setText(rs.getString("gender"));
+					State.setText(rs.getString("state"));
+					City.setText(rs.getString("city"));
+					
+			}
+				} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			
+			}
+	}
+	
 				
 			
 			
-	}
-}
+	
+

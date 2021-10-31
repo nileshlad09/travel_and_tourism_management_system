@@ -20,22 +20,22 @@ public class package2 extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					package2 frame = new package2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					package2 frame = new package2();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public package2() {
+	public package2(String Username) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 130, 750, 500);
 		setResizable(false); 
@@ -49,7 +49,7 @@ public class package2 extends JFrame {
 		package01btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				package1 j=new package1();
+				package1 j=new package1(Username);
 				j.setVisible(true);
 			}
 		});
@@ -68,7 +68,7 @@ public class package2 extends JFrame {
 		package03btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				package3 j=new package3();
+				package3 j=new package3(Username);
 				j.setVisible(true);
 			}
 		});
@@ -129,7 +129,7 @@ public class package2 extends JFrame {
 		Book_now.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				Book_package j=new Book_package();
+				Book_package j=new Book_package(Username);
 				j.setVisible(true);
 			}
 		});

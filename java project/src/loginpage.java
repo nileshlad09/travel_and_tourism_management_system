@@ -39,11 +39,14 @@ public class loginpage extends JFrame {
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JButton btnNewButton;
+	
+	
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -105,9 +108,10 @@ public class loginpage extends JFrame {
 					String sql="Select * from createaccount where username='"+Username+"' and password='"+passwordField.getText().toString()+"'";
 					ResultSet rs=stmt.executeQuery(sql);
 					if(rs.next()) {
+				
 						setVisible(false);
-						 homepage j=new homepage();
-						j.setVisible(true);
+						new homepage(Username).setVisible(true);
+						
 					}else
 						JOptionPane.showMessageDialog(null, "Incorrect Username and Password");
 				} catch (Exception e1) {

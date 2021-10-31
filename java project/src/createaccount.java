@@ -34,6 +34,10 @@ public class createaccount extends JFrame {
 	private JTextField user_name;
 	private JLabel lblNewLabel_7;
 	private JButton create_account;
+	private JLabel lblNewLabel_9;
+	private JTextField Gender;
+	private JTextField State;
+	private JTextField City;
 
 	/**
 	 * Launch the application.
@@ -74,6 +78,9 @@ public class createaccount extends JFrame {
 	                String MobileNumber = mobile_no.getText();
 	                int len = MobileNumber.length();
 	                String password = Password.getText();
+	                String gender=Gender.getText();
+	                String state=State.getText();
+	                String city=City.getText();
 	                
 	                try {
 						Class.forName("com.mysql.cj.jdbc.Driver");
@@ -100,7 +107,7 @@ public class createaccount extends JFrame {
 	                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject", "root", "nilesh09@45");
 
 	                    String query = "INSERT INTO createaccount values('" + First_name + "','" + Last_name + "','" + Email_Id + "','" +
-                          MobileNumber + "','" + password + "','" +username + "')";
+                          MobileNumber + "','" + password + "','" +username + "','" +gender + "','" +state + "','" + city + "')";
 
 	                    Statement sta = connection.createStatement();
  	                    int x = sta.executeUpdate(query);
@@ -119,14 +126,47 @@ public class createaccount extends JFrame {
 	                }
 			}
 		});
+		
+		City = new JTextField();
+		City.setBounds(165, 345, 199, 26);
+		contentPane.add(City);
+		City.setColumns(10);
+		
+		JLabel lblNewLabel_11 = new JLabel("City:-");
+		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_11.setForeground(Color.WHITE);
+		lblNewLabel_11.setBounds(81, 349, 61, 14);
+		contentPane.add(lblNewLabel_11);
+		
+		State = new JTextField();
+		State.setBounds(650, 299, 199, 22);
+		contentPane.add(State);
+		State.setColumns(10);
+		
+		JLabel lblNewLabel_10 = new JLabel("State:-");
+		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_10.setForeground(Color.WHITE);
+		lblNewLabel_10.setBounds(552, 300, 68, 14);
+		contentPane.add(lblNewLabel_10);
+		
+		Gender = new JTextField();
+		Gender.setBounds(165, 298, 199, 23);
+		contentPane.add(Gender);
+		Gender.setColumns(10);
+		
+		lblNewLabel_9 = new JLabel("Gender:-");
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_9.setForeground(Color.WHITE);
+		lblNewLabel_9.setBounds(81, 300, 61, 14);
+		contentPane.add(lblNewLabel_9);
 		create_account.setBackground(Color.CYAN);
 		create_account.setFont(new Font("Tahoma", Font.BOLD, 13));
-		create_account.setBounds(422, 375, 156, 39);
+		create_account.setBounds(429, 411, 156, 39);
 		contentPane.add(create_account);
 		
 		JLabel lblNewLabel_8 = new JLabel("Already have account ?");
 		lblNewLabel_8.setForeground(Color.RED);
-		lblNewLabel_8.setBounds(626, 388, 130, 14);
+		lblNewLabel_8.setBounds(624, 394, 130, 14);
 		contentPane.add(lblNewLabel_8);
 		
 		JButton btnNewButton = new JButton("Login");
@@ -140,7 +180,7 @@ public class createaccount extends JFrame {
 		});
 		btnNewButton.setBackground(Color.DARK_GRAY);
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNewButton.setBounds(636, 402, 89, 23);
+		btnNewButton.setBounds(636, 419, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		lblNewLabel_7 = new JLabel("Set Username:-");

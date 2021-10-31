@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 
@@ -31,22 +32,13 @@ public class Update_detail extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Update_detail frame = new Update_detail();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public Update_detail() {
+	public Update_detail(String Username) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 130, 750, 500);
 		 setResizable(false);
@@ -100,46 +92,7 @@ public class Update_detail extends JFrame {
 		JButton Update_btn = new JButton("UPDATE");
 		Update_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-                String Email_Id = Email_id.getText();
-                String username = user_name.getText();
-                String MobileNumber = mobile_no.getText();
-                int len = MobileNumber.length();
-                String state =State.getText();
-                String city=City.getText();
-                String gender=Gender.getText();
-                
-                
-                
-                try {
-					Class.forName("com.mysql.cj.jdbc.Driver");
-				} catch (ClassNotFoundException e1) {
-					
-					e1.printStackTrace();
-				}
-                
-                if (len != 10) {
-                    JOptionPane.showMessageDialog(Update_btn, "Enter a valid mobile number");
-                }
-
-                try {
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject", "root", "nilesh09@45");
-
-                    String query = "INSERT INTO updateddetail values('" +username + "','" +MobileNumber + "','" +
-                           gender+ "','" + state + "','" + city + "','" +Email_Id + "')";
-
-                    Statement sta = connection.createStatement();
-	                    int x = sta.executeUpdate(query);
-                   if (x == 0) {
-                    JOptionPane.showMessageDialog(Update_btn, "This is alredy exist");
-                  } else {
-                        JOptionPane.showMessageDialog(Update_btn,
-                             "Your Detail sucessfully Update");                                                             
-                    
-                    connection.close();
-                }  } catch (Exception exception) {
-                    exception.printStackTrace();
-                }
-			}
+                			}
 		});
 		Update_btn.setForeground(Color.WHITE);
 		Update_btn.setBackground(Color.BLACK);
@@ -161,6 +114,7 @@ public class Update_detail extends JFrame {
 		
 		user_name = new JTextField();
 		user_name.setBounds(202, 115, 178, 20);
+		user_name.setText(Username);
 		contentPane.add(user_name);
 		user_name.setColumns(10);
 		
@@ -188,6 +142,39 @@ public class Update_detail extends JFrame {
 		Email_id.setBounds(202, 297, 178, 20);
 		contentPane.add(Email_id);
 		Email_id.setColumns(10);
+	
+	
+	
+		try {
+			
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject","root","nilesh09@45");
+			Statement stmt=con.createStatement();
+			String sql="Select * from createaccount where username= '"+Username+"'";
+			ResultSet rs=stmt.executeQuery(sql);
+			while(rs.next()) {
+
+				user_name.setText(rs.getString("username"));
+				Email_id.setText(rs.getString("Email_ID"));
+				mobile_no.setText(rs.getString("Mobile Number"));
+				Gender.setText(rs.getString("gender"));
+				State.setText(rs.getString("state"));
+				City.setText(rs.getString("city"));
+				
+		}
+			} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+
+	
+	
+	
+	
 	}
+	
+	
+	
 
 }
