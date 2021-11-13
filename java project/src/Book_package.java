@@ -211,7 +211,7 @@ public class Book_package extends JFrame {
 			while(rs.next()) {
 
 				Username_1.setText(rs.getString("username"));
-				Mobilenumber.setText(rs.getString("Mobile Number"));
+				Mobilenumber.setText(rs.getString("MobileNumber"));
 				
 				
 		}

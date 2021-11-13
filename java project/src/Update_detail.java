@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 public class Update_detail extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField user_name;
+	private JLabel user_name;
 	private JTextField mobile_no;
 	private JTextField Gender;
 	private JTextField State;
@@ -92,7 +92,43 @@ public class Update_detail extends JFrame {
 		JButton Update_btn = new JButton("UPDATE");
 		Update_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-                			}
+	                String Email_Id = Email_id.getText();
+	                String username = user_name.getText();
+	                String MobileNumber = mobile_no.getText();
+	                int len = MobileNumber.length();
+	                String gender=Gender.getText();
+	                String state=State.getText();
+	                String city=City.getText();
+	                
+	                try {
+						Class.forName("com.mysql.cj.jdbc.Driver");
+					} catch (ClassNotFoundException e1) {
+						
+						e1.printStackTrace();
+					}
+					 if (len != 10) {
+	                    JOptionPane.showMessageDialog(null, "Enter a valid mobile number");
+	                }
+				
+
+                try {
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject", "root", "nilesh09@45");
+                    String sql="Select * from createaccount where username= '"+Username+"'";
+                    String query = "UPDATE createaccount set Email_ID='"+Email_Id+"', MobileNumber='"+MobileNumber+"',gender='" +gender + "',state='"+state + "',city='" + city + "'";
+
+                    Statement sta = connection.createStatement();
+	                    int x = sta.executeUpdate(query);
+                   if (x == 0) {
+                    JOptionPane.showMessageDialog(null, "This is alredy exist");
+                  } else {
+                        JOptionPane.showMessageDialog(null,
+                             "Your detail is sucessfully Updated");                                                          
+                    connection.close();
+                }  } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+					}		
+           
 		});
 		Update_btn.setForeground(Color.WHITE);
 		Update_btn.setBackground(Color.BLACK);
@@ -112,11 +148,10 @@ public class Update_detail extends JFrame {
 		btnNewButton_1.setBounds(232, 381, 89, 23);
 		contentPane.add(btnNewButton_1);
 		
-		user_name = new JTextField();
+		user_name = new JLabel();
 		user_name.setBounds(202, 115, 178, 20);
 		user_name.setText(Username);
 		contentPane.add(user_name);
-		user_name.setColumns(10);
 		
 		mobile_no = new JTextField();
 		mobile_no.setBounds(202, 153, 178, 20);
@@ -158,7 +193,7 @@ public class Update_detail extends JFrame {
 
 				user_name.setText(rs.getString("username"));
 				Email_id.setText(rs.getString("Email_ID"));
-				mobile_no.setText(rs.getString("Mobile Number"));
+				mobile_no.setText(rs.getString("MobileNumber"));
 				Gender.setText(rs.getString("gender"));
 				State.setText(rs.getString("state"));
 				City.setText(rs.getString("city"));

@@ -178,7 +178,7 @@ public class profile extends JFrame {
 
 					User_name.setText(rs.getString("username"));
 					Email_id.setText(rs.getString("Email_ID"));
-					mobile_no.setText(rs.getString("Mobile Number"));
+					mobile_no.setText(rs.getString("MobileNumber"));
 					first_name.setText(rs.getString("First_name"));
 					last_name.setText(rs.getString("Last_name"));
 					Gender.setText(rs.getString("gender"));

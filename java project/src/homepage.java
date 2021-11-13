@@ -23,8 +23,8 @@ public class homepage extends JFrame {
 //		EventQueue.invokeLater(new Runnable() {
 //			public void run() {
 //				try {
-////					homepage frame = new homepage(String Username);
-////					frame.setVisible(true);
+//					homepage frame = new homepage();
+//					frame.setVisible(true);
 //				} catch (Exception e) {
 //					e.printStackTrace();
 //				}
@@ -38,7 +38,9 @@ public class homepage extends JFrame {
 	public homepage(String Username) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1366,768);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 127, 80));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -52,7 +54,7 @@ public class homepage extends JFrame {
 		JButton Viewpackage_btn = new JButton("View Package");
 		Viewpackage_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(true);
+			
 				View_package j=new View_package(Username);
 				j.setVisible(true);
 			}
@@ -64,7 +66,7 @@ public class homepage extends JFrame {
 		
 		JLabel welcome = new JLabel("");
 		welcome.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
-		welcome.setBounds(1085, 11, 239, 39);
+		welcome.setBounds(1139, 11, 201, 44);
 		welcome.setText("Welcome  "+Username);
 		contentPane.add(welcome);
 		
@@ -94,7 +96,7 @@ public class homepage extends JFrame {
 		JButton profile_btn = new JButton("Profile");
 		profile_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(true);
+				
 				profile j=new profile(Username);
 				j.setVisible(true);
 			}
@@ -130,11 +132,18 @@ public class homepage extends JFrame {
 		Package_btn.setBounds(0, 180, 201, 56);
 		contentPane.add(Package_btn);
 		
-		JButton Hotel_btn = new JButton("Hotel Details");
-		Hotel_btn.setBackground(new Color(255, 127, 80));
-		Hotel_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		Hotel_btn.setBounds(0, 294, 201, 56);
-		contentPane.add(Hotel_btn);
+		JButton ViewHotel_btn = new JButton("View Hotels");
+		ViewHotel_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(true);
+				viewHotels j=new viewHotels();
+				j.setVisible(true);
+			}
+		});
+		ViewHotel_btn.setBackground(new Color(255, 127, 80));
+		ViewHotel_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		ViewHotel_btn.setBounds(0, 294, 201, 56);
+		contentPane.add(ViewHotel_btn);
 		
 		JButton About = new JButton("About");
 		About.setBackground(new Color(255, 127, 80));
@@ -144,11 +153,11 @@ public class homepage extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\kalyan office\\eclipse-workspace\\java project\\bin\\Home.jpg"));
-		lblNewLabel.setBounds(0, 66, 1469, 663);
+		lblNewLabel.setBounds(201, 66, 1300, 663);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\kalyan office\\eclipse-workspace\\java project\\bin\\orange.png"));	
+		lblNewLabel_1.setIcon(null);	
 		lblNewLabel_1.setBackground(new Color(255, 200, 0));
 		lblNewLabel_1.setBounds(0, 0, 1350, 67);
 		contentPane.add(lblNewLabel_1);

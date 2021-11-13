@@ -65,6 +65,7 @@ public class loginpage extends JFrame {
 	public loginpage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1368,768);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -93,12 +94,9 @@ public class loginpage extends JFrame {
 		
 		JButton btn1 = new JButton("SignIn");
 		btn1.setForeground(Color.BLACK);
-		btn1.addActionListener(new ActionListener() {
-		
-			
+		btn1.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
 				try {
-					//Class.forName("com.mysql.jdbc.Driver");
 					
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					String Username=textField.getText();
