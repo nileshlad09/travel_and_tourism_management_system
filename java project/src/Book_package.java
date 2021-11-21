@@ -30,23 +30,24 @@ public class Book_package extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Book_package frame = new Book_package();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//		}
-//		});
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					String Username=null;
+					Book_package frame = new Book_package(Username);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+		});
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Book_package(String Username) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 130, 850, 500);
 		 setResizable(false); 
 		contentPane = new JPanel();
@@ -153,21 +154,33 @@ public class Book_package extends JFrame {
 					} catch (ClassNotFoundException e1) {
 						
 						e1.printStackTrace();
-					}  
-
+					}
+                String Package=(String) comboBox_selectpackage.getSelectedItem();
+                String person=textField.getText();
+                if(person.trim().isEmpty())
+                {
+                	JOptionPane.showMessageDialog(null, "please Select all option");
+                	
+                } 
+                else {
+                
 	                try {
 	                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject", "root", "nilesh09@45");
-
+                        String Totalprice=TotalPrice.getText();
+                        String MobileNo=Mobilenumber.getText();       
 	                    String query = "INSERT INTO bookpackage values('" + Username_1.getText()+ "','" + comboBox_selectpackage.getSelectedItem() + "','" + textField.getText() + "','" +
 	                    		Mobilenumber.getText()+ "','" + TotalPrice.getText() + "')";
 	                    JOptionPane.showMessageDialog(null, "Package Book Successfully");
 	                    setVisible(false);
+	                    View_package j=new View_package(Username,Totalprice,MobileNo,Package,person);
+	                    j.setVisible(true);
+	                    
 	                    Statement sta = connection.createStatement();
  	                    int x = sta.executeUpdate(query);
                        } catch (Exception exception) {
 	                    exception.printStackTrace();
 	                }
-	                
+                }
 			}
 		});
 		Book_btn.setBackground(Color.BLACK);
@@ -188,17 +201,6 @@ public class Book_package extends JFrame {
 		Back_btn.setBounds(256, 398, 105, 23);
 		contentPane.add(Back_btn);
 		
-		
-		
-		
-	
-
-		
-		
-		
-		
-		
-	
 		try {
 			
 			
@@ -219,5 +221,10 @@ public class Book_package extends JFrame {
 			e1.printStackTrace();
 		}
 	
+	}
+
+	private void toString(JLabel totalPrice) {
+		// TODO Auto-generated method stub
+		
 	}
 }

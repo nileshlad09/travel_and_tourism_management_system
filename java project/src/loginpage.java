@@ -42,9 +42,6 @@ public class loginpage extends JFrame {
 	
 	
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
@@ -106,10 +103,8 @@ public class loginpage extends JFrame {
 					String sql="Select * from createaccount where username='"+Username+"' and password='"+passwordField.getText().toString()+"'";
 					ResultSet rs=stmt.executeQuery(sql);
 					if(rs.next()) {
-				
 						setVisible(false);
 						new homepage(Username).setVisible(true);
-						
 					}else
 						JOptionPane.showMessageDialog(null, "Incorrect Username and Password");
 				} catch (Exception e1) {
@@ -140,22 +135,14 @@ public class loginpage extends JFrame {
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		       	
 				setVisible(false);
 				new createaccount().setVisible(true);
-		        }
-		        
-			
+		        }		
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton.setBackground(Color.cyan);
 		btnNewButton.setBounds(412, 493, 243, 34);
 		contentPane.add(btnNewButton);
-	
-		
-		
-	
-		
 		
 		//background
 		lblNewLabel = new JLabel("");

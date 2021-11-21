@@ -45,25 +45,6 @@ public class homepage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton ViewBook_btn = new JButton("View Booked Hotel");
-		ViewBook_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		ViewBook_btn.setBackground(new Color(255, 127, 80));
-		ViewBook_btn.setBounds(0, 408, 201, 56);
-		contentPane.add(ViewBook_btn);
-		
-		JButton Viewpackage_btn = new JButton("View Package");
-		Viewpackage_btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-				View_package j=new View_package(Username);
-				j.setVisible(true);
-			}
-		});
-		Viewpackage_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		Viewpackage_btn.setBackground(new Color(255, 127, 80));
-		Viewpackage_btn.setBounds(0, 237, 201, 56);
-		contentPane.add(Viewpackage_btn);
-		
 		JLabel welcome = new JLabel("");
 		welcome.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		welcome.setBounds(1139, 11, 201, 44);
@@ -76,21 +57,27 @@ public class homepage extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JButton Hotelbook_btn = new JButton("Book Hotel");
+		Hotelbook_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BookHotel j=new BookHotel(Username);
+				j.setVisible(true);
+			}
+		});
 		Hotelbook_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		Hotelbook_btn.setBackground(new Color(255, 127, 80));
-		Hotelbook_btn.setBounds(0, 351, 201, 56);
+		Hotelbook_btn.setBounds(0, 292, 201, 56);
 		contentPane.add(Hotelbook_btn);
 		
 		JButton Payment_btn = new JButton("Payment");
 		Payment_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		Payment_btn.setBackground(new Color(255, 127, 80));
-		Payment_btn.setBounds(0, 465, 201, 56);
+		Payment_btn.setBounds(0, 348, 201, 56);
 		contentPane.add(Payment_btn);
 		
 		JButton Contact_btn = new JButton("Contact");
 		Contact_btn.setBackground(new Color(255, 127, 80));
 		Contact_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		Contact_btn.setBounds(0, 522, 201, 56);
+		Contact_btn.setBounds(0, 405, 201, 56);
 		contentPane.add(Contact_btn);
 		
 		JButton profile_btn = new JButton("Profile");
@@ -142,13 +129,13 @@ public class homepage extends JFrame {
 		});
 		ViewHotel_btn.setBackground(new Color(255, 127, 80));
 		ViewHotel_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		ViewHotel_btn.setBounds(0, 294, 201, 56);
+		ViewHotel_btn.setBounds(0, 236, 201, 56);
 		contentPane.add(ViewHotel_btn);
 		
 		JButton About = new JButton("About");
 		About.setBackground(new Color(255, 127, 80));
 		About.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		About.setBounds(0, 579, 201, 56);
+		About.setBounds(0, 461, 201, 56);
 		contentPane.add(About);
 		
 		JLabel lblNewLabel = new JLabel("");

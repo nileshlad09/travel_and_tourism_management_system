@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -39,9 +40,13 @@ public class View_package extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param person 
+	 * @param hotel 
+	 * @param mobileNo 
+	 * @param totalprice 
 	 */
-	public View_package(String Username) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public View_package(String Username, String totalprice, String mobileNo, String Package, String person) {
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 130, 850, 500);
 		setResizable(false); 
 		contentPane = new JPanel();
@@ -89,7 +94,7 @@ public class View_package extends JFrame {
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnNewButton.setBounds(156, 380, 108, 36);
+		btnNewButton.setBounds(229, 380, 108, 36);
 		contentPane.add(btnNewButton);
 		
 		JLabel UserName = new JLabel("");
@@ -122,30 +127,26 @@ public class View_package extends JFrame {
 		lblNewLabel_6.setBounds(445, 60, 379, 375);
 		contentPane.add(lblNewLabel_6);
 		
+	
+		UserName.setText(Username);
+		mo_number.setText(mobileNo);
+		Packages_.setText(Package);
+		no_persons.setText(person);
+		Total_pr.setText(totalprice);
 		
+		JButton btnPay = new JButton("Pay");
+		btnPay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				packagePayment j=new packagePayment(Username,totalprice,Package);
+				j.setVisible(true);
+			}
+		});
+		btnPay.setForeground(Color.WHITE);
+		btnPay.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnPay.setBackground(Color.BLACK);
+		btnPay.setBounds(54, 380, 108, 36);
+		contentPane.add(btnPay);
 		
-		
-
-		try {
-			
-			
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject","root","nilesh09@45");
-			Statement stmt=con.createStatement();
-			String sql="Select * from bookpackage where username= '"+Username+"'";
-			ResultSet rs=stmt.executeQuery(sql);
-			while(rs.next()) {
-
-				UserName.setText(rs.getString("username"));
-				mo_number.setText(rs.getString("MobileNumber"));
-				Packages_.setText(rs.getString("packages"));
-				no_persons.setText(rs.getString("persons"));
-				Total_pr.setText(rs.getString("price"));
-		}
-			} catch (Exception e1) {
-			e1.printStackTrace();
-		}
 	}
-
 }

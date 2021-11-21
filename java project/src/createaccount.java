@@ -88,8 +88,6 @@ public class createaccount extends JFrame {
 						
 						e1.printStackTrace();
 					}
-					
-
 	                String msg = "" + First_name;
 	                msg += " \n";
 	                

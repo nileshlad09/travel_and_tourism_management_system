@@ -15,7 +15,7 @@ public viewHotels()
     setLayout(new BorderLayout( ));
     setBounds(300, 130, 750, 500);
 	 setResizable(false);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
     JPanel p=new JPanel(new FlowLayout());
     b1=new JButton("<<");

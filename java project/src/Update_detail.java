@@ -39,7 +39,7 @@ public class Update_detail extends JFrame {
 	 * Create the frame.
 	 */
 	public Update_detail(String Username) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 130, 750, 500);
 		 setResizable(false);
 		contentPane = new JPanel();
@@ -202,14 +202,5 @@ public class Update_detail extends JFrame {
 			} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-
-	
-	
-	
-	
 	}
-	
-	
-	
-
 }

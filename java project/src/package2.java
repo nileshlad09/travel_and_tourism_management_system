@@ -36,7 +36,7 @@ public class package2 extends JFrame {
 	 * Create the frame.
 	 */
 	public package2(String Username) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 130, 750, 500);
 		setResizable(false); 
 		contentPane = new JPanel();
