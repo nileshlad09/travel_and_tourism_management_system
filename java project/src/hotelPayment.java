@@ -11,9 +11,12 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -168,15 +171,21 @@ public class hotelPayment extends JFrame {
                 {
                 	JOptionPane.showMessageDialog(null, "please Enter valid card Number");
                 }
-                else if(ExpireDate.getText().matches("[0-9]{2}[ ]{1}[0-9]{2}[ ]{1}[0-9]{4}")==false)
+                else if(ExpireDate.getText().matches("[0-9]{2}[-]{1}[0-9]{2}[-]{1}[0-9]{4}")==false)
                 {
                 	JOptionPane.showMessageDialog(null, "please Enter Date in given formate");
                 }
                 else {
 	                try {
+	                	DateTimeFormatter dtf =DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	                	LocalDateTime now =LocalDateTime.now();
+//	                	Date date=new Date(eventMask);
+//	                	java.sql.Date sqldate=new java.sql.Date(date.getTime());
+	                	
+	                	
 	                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject", "root", "nilesh09@45");
 
-	                    String query = "INSERT INTO payment_detail values('" + Username_1.getText()+ "','" + CardNumber.getText() + "','" + CVC.getText() + "','" +
+	                    String query = "INSERT INTO payment_detail values('" +dtf.format(now)+ "','" + Username_1.getText()+ "','" + CardNumber.getText() + "','" + CVC.getText() + "','" +
 	                    		ExpireDate.getText()+ "','" + Amount.getText() + "','" + CardName.getText() + "','" + Hotel_name.getText() + "')";
 	                    JOptionPane.showMessageDialog(null, "Payment Successfull");
 	                    setVisible(false);

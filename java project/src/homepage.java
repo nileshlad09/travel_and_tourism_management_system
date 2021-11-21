@@ -20,16 +20,17 @@ public class homepage extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					homepage frame = new homepage();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					String Username=null;
+					homepage frame = new homepage(Username);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**
@@ -68,7 +69,13 @@ public class homepage extends JFrame {
 		Hotelbook_btn.setBounds(0, 292, 201, 56);
 		contentPane.add(Hotelbook_btn);
 		
-		JButton Payment_btn = new JButton("Payment");
+		JButton Payment_btn = new JButton("Payment History");
+		Payment_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				paymentHistory j=new paymentHistory(Username);
+				j.setVisible(true);
+			}
+		});
 		Payment_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		Payment_btn.setBackground(new Color(255, 127, 80));
 		Payment_btn.setBounds(0, 348, 201, 56);
@@ -133,6 +140,12 @@ public class homepage extends JFrame {
 		contentPane.add(ViewHotel_btn);
 		
 		JButton About = new JButton("About");
+		About.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				About j=new About();
+				j.setVisible(true);
+			}
+		});
 		About.setBackground(new Color(255, 127, 80));
 		About.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		About.setBounds(0, 461, 201, 56);

@@ -39,6 +39,7 @@ public class loginpage extends JFrame {
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JButton btnNewButton;
+	private JLabel lblNewLabel_2;
 	
 	
 
@@ -93,8 +94,7 @@ public class loginpage extends JFrame {
 		btn1.setForeground(Color.BLACK);
 		btn1.addActionListener(new ActionListener() {	
 			public void actionPerformed(ActionEvent e) {
-				try {
-					
+				try {	
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					String Username=textField.getText();
 					
@@ -144,6 +144,14 @@ public class loginpage extends JFrame {
 		btnNewButton.setBounds(412, 493, 243, 34);
 		contentPane.add(btnNewButton);
 		
+
+		lblNewLabel_2 = new JLabel("NP Travel & Tourism.");
+		lblNewLabel_2.setForeground(Color.red);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 50));
+		lblNewLabel_2.setBounds(471, 48, 600, 63);
+		contentPane.add(lblNewLabel_2);
+		
+		
 		//background
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setBackground(UIManager.getColor("EditorPane.selectionBackground"));
@@ -152,6 +160,7 @@ public class loginpage extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		
+
 		
 	}
 }
