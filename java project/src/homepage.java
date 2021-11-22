@@ -81,7 +81,13 @@ public class homepage extends JFrame {
 		Payment_btn.setBounds(0, 348, 201, 56);
 		contentPane.add(Payment_btn);
 		
-		JButton Contact_btn = new JButton("Contact");
+		JButton Contact_btn = new JButton("Contact Us");
+		Contact_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				contactUs j=new contactUs(Username);
+				j.setVisible(true);
+			}
+		});
 		Contact_btn.setBackground(new Color(255, 127, 80));
 		Contact_btn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		Contact_btn.setBounds(0, 405, 201, 56);

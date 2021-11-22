@@ -35,16 +35,17 @@ public class package3 extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					package1 frame = new package1();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					String Username=null;
+					package3 frame = new package3(Username);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**
@@ -135,8 +136,8 @@ public class package3 extends JFrame {
 		lblNewLabel_2.setBounds(488, 399, 136, 30);
 		contentPane.add(lblNewLabel_2);
 		
-		lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\kalyan office\\eclipse-workspace\\java project\\bin\\package3.jpg"));
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\kalyan office\\eclipse-workspace\\java project\\bin\\package_3.jpg"));
 		lblNewLabel_1.setBounds(347, 103, 377, 244);
 		contentPane.add(lblNewLabel_1);
 		

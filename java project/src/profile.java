@@ -26,16 +26,17 @@ public class profile extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-//	EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					profile frame = new profile();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
+	EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					String Username=null;
+					profile frame = new profile(Username);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**

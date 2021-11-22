@@ -62,7 +62,7 @@ public class Book_package extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\kalyan office\\eclipse-workspace\\java project\\bin\\Book package1.JPG"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\kalyan office\\eclipse-workspace\\java project\\bin\\Book package.jpg"));
 		lblNewLabel_1.setBounds(369, 63, 436, 370);
 		contentPane.add(lblNewLabel_1);
 		

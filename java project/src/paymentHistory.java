@@ -56,7 +56,7 @@ public class paymentHistory extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(30, 181, 751, 269);
+		scrollPane.setBounds(10, 181, 814, 269);
 		contentPane.add(scrollPane);
 		
 		table_1 = new JTable();
