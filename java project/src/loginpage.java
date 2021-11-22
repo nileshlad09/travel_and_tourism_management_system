@@ -96,8 +96,7 @@ public class loginpage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {	
 					Class.forName("com.mysql.cj.jdbc.Driver");
-					String Username=textField.getText();
-					
+					String Username=textField.getText();			
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject","root","nilesh09@45");
 					Statement stmt=con.createStatement();
 					String sql="Select * from createaccount where username='"+Username+"' and password='"+passwordField.getText().toString()+"'";
@@ -107,6 +106,7 @@ public class loginpage extends JFrame {
 						new homepage(Username).setVisible(true);
 					}else
 						JOptionPane.showMessageDialog(null, "Incorrect Username and Password");
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

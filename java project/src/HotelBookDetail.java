@@ -41,7 +41,7 @@ public class HotelBookDetail extends JFrame {
 		});
 	}
 
-	public HotelBookDetail(String Username, String mobileNumber, String hotel, String price, String ac, String food2, String person) {
+	public HotelBookDetail(String Username, String mobileNumber, String hotel, String price, String ac, String food2, String person, String days) {
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 130, 850, 500);
 		setResizable(false);
@@ -135,7 +135,8 @@ public class HotelBookDetail extends JFrame {
 		Pay_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				hotelPayment j= new hotelPayment(Username,price,hotel);
+			
+				hotelPayment j= new hotelPayment(Username,price,hotel,ac,food2,person,days);
 				j.setVisible(true);		
 				}
 		});
@@ -157,7 +158,17 @@ public class HotelBookDetail extends JFrame {
 		Back_btn.setBounds(456, 397, 114, 37);
 		contentPane.add(Back_btn);
 		
-	
+		JLabel lblNewLabel_4_2 = new JLabel("Number Of Days:-");
+		lblNewLabel_4_2.setFont(new Font("Cambria", Font.BOLD, 18));
+		lblNewLabel_4_2.setBounds(451, 347, 196, 29);
+		contentPane.add(lblNewLabel_4_2);
+		
+		JLabel NoDays = new JLabel("<dynamic>");
+		NoDays.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		NoDays.setBounds(701, 352, 156, 24);
+		contentPane.add(NoDays);
+		
+		
 		User_name.setText(Username);
 		MobileNo.setText(mobileNumber);
 		NoPerson.setText(person);
@@ -165,5 +176,7 @@ public class HotelBookDetail extends JFrame {
 		Food.setText(food2);
 		AcN.setText(ac);
 		cost.setText(price);
+		NoDays.setText(days);
+		
 	}
 }

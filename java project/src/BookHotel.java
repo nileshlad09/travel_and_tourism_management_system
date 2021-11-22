@@ -27,6 +27,7 @@ public class BookHotel extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTextField noOfDays;
 
 	/**
 	 * Launch the application.
@@ -69,7 +70,7 @@ public class BookHotel extends JFrame {
 
 		
 		JLabel lblNewLabel_5 = new JLabel("Mobile Number:-");
-		lblNewLabel_5.setBounds(26, 266, 147, 22);
+		lblNewLabel_5.setBounds(26, 306, 147, 22);
 		panel.add(lblNewLabel_5);
 		lblNewLabel_5.setFont(new Font("Cambria", Font.PLAIN, 16));
 		
@@ -97,18 +98,18 @@ public class BookHotel extends JFrame {
 		
 		JLabel lblNewLabel_4_1 = new JLabel("AC/Non AC:-");
 		lblNewLabel_4_1.setFont(new Font("Cambria", Font.PLAIN, 16));
-		lblNewLabel_4_1.setBounds(25, 185, 121, 29);
+		lblNewLabel_4_1.setBounds(26, 226, 121, 29);
 		panel.add(lblNewLabel_4_1);
 		
 		
 		JLabel lblNewLabel_6 = new JLabel("Total Price:-");
-		lblNewLabel_6.setBounds(26, 299, 123, 22);
+		lblNewLabel_6.setBounds(26, 339, 123, 22);
 		panel.add(lblNewLabel_6);
 		lblNewLabel_6.setFont(new Font("Cambria", Font.PLAIN, 16));
 		
 		JLabel lblNewLabel_4_1_1 = new JLabel("Food Included:-");
 		lblNewLabel_4_1_1.setFont(new Font("Cambria", Font.PLAIN, 16));
-		lblNewLabel_4_1_1.setBounds(25, 226, 121, 29);
+		lblNewLabel_4_1_1.setBounds(26, 266, 121, 29);
 		panel.add(lblNewLabel_4_1_1);
 
 		
@@ -119,7 +120,7 @@ public class BookHotel extends JFrame {
 		
 		JLabel MobileNumber = new JLabel("Mobilenumber");
 		MobileNumber.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		MobileNumber.setBounds(179, 267, 175, 21);
+		MobileNumber.setBounds(179, 307, 175, 21);
 		panel.add(MobileNumber);
 		
 		textField = new JTextField();
@@ -150,17 +151,28 @@ public class BookHotel extends JFrame {
 		JComboBox acnonac = new JComboBox();
 		acnonac.setModel(new DefaultComboBoxModel(new String[] {"AC","Non-AC"}));
 		acnonac.setBackground(Color.WHITE);
-		acnonac.setBounds(184, 190, 197, 22);
+		acnonac.setBounds(184, 231, 197, 22);
 		panel.add(acnonac);
 		
 		JComboBox Food = new JComboBox();
 		Food.setModel(new DefaultComboBoxModel(new String[] {"Yes","No"}));
 		Food.setBackground(Color.WHITE);
-		Food.setBounds(184, 231, 196, 22);
+		Food.setBounds(184, 271, 196, 22);
 		panel.add(Food);
+
+		JLabel noofDays = new JLabel("Total no of days:-");
+		noofDays.setFont(new Font("Cambria", Font.PLAIN, 16));
+		noofDays.setBounds(26, 186, 121, 29);
+		panel.add(noofDays);
+		
+		noOfDays = new JTextField();
+		noOfDays.setColumns(10);
+		noOfDays.setBounds(184, 189, 199, 27);
+		panel.add(noOfDays);
+		
 		
 		JLabel TotalPrice = new JLabel("");
-		TotalPrice.setBounds(184, 301, 126, 20);
+		TotalPrice.setBounds(184, 341, 126, 20);
 		panel.add(TotalPrice);
 		TotalPrice.setForeground(Color.RED);
 		TotalPrice.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -173,48 +185,49 @@ public class BookHotel extends JFrame {
 				String r =(String) Food.getSelectedItem();
 				int cost =0;
 				if(p.equals("Mardan Palace,Turkey")&& q.equals("AC")&& r.equals("Yes")) {
-				  cost+=50000;
+				  cost+=24000;
 			    }
 				else if(p.equals("Mardan Palace,Turkey")&& q.equals("Non-AC")&& r.equals("Yes")) {
-					  cost+=45000;
+					  cost+=21000;
 				}
 				else if(p.equals("Mardan Palace,Turkey")&& q.equals("AC")&& r.equals("No")) {
-					  cost+=42000;
+					  cost+=23000;
 				}
 				else if(p.equals("Mardan Palace,Turkey")&& q.equals("Non-AC")&& r.equals("No")) {
-					  cost+=30000;
+					  cost+=20000;
 				}
 				else if(p.equals("Burj Al Arab,Dubai")&& q.equals("AC")&& r.equals("Yes")) {
-					  cost+=45000;
+					  cost+=18800;
 				}
 				else if(p.equals("Burj Al Arab,Dubai")&& q.equals("Non-AC")&& r.equals("Yes")) {
-						  cost+=40000;
+						  cost+=16000;
 				}
 				else if(p.equals("Burj Al Arab,Dubai")&& q.equals("AC")&& r.equals("No")) {
-						  cost+=36000;
+						  cost+=17800;
 				}
 				else if(p.equals("Burj Al Arab,Dubai")&& q.equals("Non-AC")&& r.equals("No")) {
-						  cost+=25000;
+						  cost+=15000;
 				}
 				else if(p.equals("Atlantis Paradise,Bahamas")&& q.equals("AC")&& r.equals("Yes")) {
-						  cost+=40000;
+						  cost+=153000;
 			    }
 				else if(p.equals("Atlantis Paradise,Bahamas")&& q.equals("Non-AC")&& r.equals("Yes")) {
-							  cost+=36000;
+							  cost+=12800;
 				}
 				else if(p.equals("Atlantis Paradise,Bahamas")&& q.equals("AC")&& r.equals("No")) {
-							  cost+=30000;
+							  cost+=14500;
 				}
 				else if(p.equals("Atlantis Paradise,Bahamas")&& q.equals("Non-AC")&& r.equals("No")) {
-							  cost+=20000;
+							  cost+=12000;
 				}	
 			int persons=Integer.parseInt(textField.getText());
-			cost*=persons;
+			int days=Integer.parseInt(noOfDays.getText());
+			cost*=(persons*days);
 			TotalPrice.setText("Rs "+cost);
 				
 			}
 		});
-		Checkprice_btn.setBounds(50, 353, 123, 29);
+		Checkprice_btn.setBounds(36, 384, 123, 29);
 		panel.add(Checkprice_btn);
 		Checkprice_btn.setHorizontalAlignment(SwingConstants.LEADING);
 		Checkprice_btn.setFont(new Font("Cambria", Font.BOLD, 14));
@@ -231,9 +244,15 @@ public class BookHotel extends JFrame {
 				e1.printStackTrace();
 			}  
 			 String person=textField.getText();
+			 String Days=noOfDays.getText();
             if( person.trim().isEmpty())
             {
-            	JOptionPane.showMessageDialog(null, "please Enter Total Persons");
+            	JOptionPane.showMessageDialog(null, "please Enter Total no of Persons");
+            	
+            }
+            else if(Days.trim().isEmpty())
+            {
+            	JOptionPane.showMessageDialog(null, "please Enter Total no of days");
             	
             }
             else {
@@ -247,11 +266,11 @@ public class BookHotel extends JFrame {
                 String food=(String)Food.getSelectedItem();
               
                 String query = "INSERT INTO bookhotel values('" + User_name.getText()+ "','" + SelectHotel.getSelectedItem()+ "','" + 
-                textField.getText() + "','" +  acnonac.getSelectedItem() + "','" + Food.getSelectedItem() +"','"+ 
+                textField.getText() + "','"+noOfDays.getText()+"','" +  acnonac.getSelectedItem() + "','" + Food.getSelectedItem() +"','"+ 
                 		MobileNumber.getText()+ "','" + TotalPrice.getText() + "')";
                 JOptionPane.showMessageDialog(null, "Hotel Booked Successfully");
                 setVisible(false);
-                HotelBookDetail j=new HotelBookDetail(Username,mobileNumber,Hotel,price,Ac,food,person);
+                HotelBookDetail j=new HotelBookDetail(Username,mobileNumber,Hotel,price,Ac,food,person,Days);
                 j.setVisible(true);
                 Statement sta = connection.createStatement();
                  int x = sta.executeUpdate(query);
@@ -262,20 +281,22 @@ public class BookHotel extends JFrame {
 			}
 		});
 
-		Book_btn.setBounds(209, 353, 111, 29);
+		Book_btn.setBounds(240, 384, 111, 29);
 		panel.add(Book_btn);
 		Book_btn.setBackground(Color.BLACK);
 		Book_btn.setFont(new Font("Cambria", Font.BOLD, 14));
 		Book_btn.setForeground(Color.WHITE);				
 		
+
+		
 		JButton btnNewButton = new JButton("Back");
+		btnNewButton.setBounds(150, 424, 115, 28);
+		panel.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(139, 411, 89, 27);
-		panel.add(btnNewButton);
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setFont(new Font("Cambria", Font.BOLD, 14));
 		btnNewButton.setForeground(Color.WHITE);

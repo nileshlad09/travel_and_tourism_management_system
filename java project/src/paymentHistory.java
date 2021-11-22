@@ -101,7 +101,7 @@ public class paymentHistory extends JFrame {
 					
 					Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject","root","nilesh09@45");
 //					Statement stmt=con.createStatement();
-					String sql="Select date,username,NameOnCard,hotel,Amount from payment_detail where username='"+Username+"'";
+					String sql="Select date,username,NameOnCard,hotel,Ac_noAc,food,persons,Days,Amount from payment_detail where username='"+Username+"'";
 					PreparedStatement pstmt=con.prepareStatement(sql);
 					ResultSet rs=pstmt.executeQuery();
 					table_1.setModel(DbUtils.resultSetToTableModel(rs));

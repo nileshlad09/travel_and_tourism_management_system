@@ -48,7 +48,7 @@ public class homepage extends JFrame {
 		
 		JLabel welcome = new JLabel("");
 		welcome.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
-		welcome.setBounds(1139, 11, 201, 44);
+		welcome.setBounds(1052, 11, 201, 44);
 		welcome.setText("Welcome  "+Username);
 		contentPane.add(welcome);
 		
@@ -91,8 +91,8 @@ public class homepage extends JFrame {
 		profile_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				profile j=new profile(Username);
-				j.setVisible(true);
+				profile a=new profile(Username);
+				a.setVisible(true);
 			}
 		});
 		profile_btn.setBackground(new Color(255, 127, 80));
@@ -161,5 +161,18 @@ public class homepage extends JFrame {
 		lblNewLabel_1.setBackground(new Color(255, 200, 0));
 		lblNewLabel_1.setBounds(0, 0, 1350, 67);
 		contentPane.add(lblNewLabel_1);
+		
+		JButton btnNewButton = new JButton("LOG OUT");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				loginpage j=new loginpage();
+				j.setVisible(true);
+			}
+		});
+		btnNewButton.setBackground(Color.BLACK);
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBounds(1251, 24, 89, 23);
+		contentPane.add(btnNewButton);
 	}
 }

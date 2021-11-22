@@ -37,26 +37,28 @@ public class hotelPayment extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					
-					String Username=null;
-					String price=null;
-					String hotel=null;
-					hotelPayment frame = new hotelPayment(Username,price,hotel);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+//				try {
+//					
+//					String Username=null;
+//					String price=null;
+//					String hotel=null;
+//					hotelPayment frame = new hotelPayment(Username,price,hotel);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
 			}
 		});
 	}
 
 	/**
 	 * Create the frame.
-	 * @param price 
+	 * @param  
 	 * @param hotel 
+	 * @param days2 
+	 * @param food2 
 	 */
-	public hotelPayment(String Username, String price, String hotel) {
+	public hotelPayment(String Username, String price, String hotel,String Ac,String food,  String person,String Days) {
 		setBounds(300, 130, 850, 500);
 		 setResizable(false); 
 		contentPane = new JPanel();
@@ -185,9 +187,12 @@ public class hotelPayment extends JFrame {
 	                	
 	                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/firstproject", "root", "nilesh09@45");
 
-	                    String query = "INSERT INTO payment_detail values('" +dtf.format(now)+ "','" + Username_1.getText()+ "','" + CardNumber.getText() + "','" + CVC.getText() + "','" +
-	                    		ExpireDate.getText()+ "','" + Amount.getText() + "','" + CardName.getText() + "','" + Hotel_name.getText() + "')";
-	                    JOptionPane.showMessageDialog(null, "Payment Successfull");
+	                    String query = "INSERT INTO payment_detail values('" +dtf.format(now)+ "','" + 
+	                    Username_1.getText()+ "','" + CardNumber.getText() + "','" +
+	                    CVC.getText() + "','" +ExpireDate.getText()+ "','" + 
+	                    CardName.getText() + "','" + Hotel_name.getText() + "','" +
+	                    Ac+ "','" +food + "','" + person + "','" + Days + "','" + Amount.getText() + "')";
+	                    JOptionPane.showMessageDialog(null, "Payment Successfull..\n Thank you for visiting :).. ");
 	                    setVisible(false);
 	                    Statement sta = connection.createStatement();
  	                    int x = sta.executeUpdate(query);

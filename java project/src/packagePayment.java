@@ -181,7 +181,7 @@ public class packagePayment extends JFrame {
 
 	                    String query = "INSERT INTO paymentpackage values('" +dtf.format(now)+ "','" + Username_1.getText()+ "','" + CardNumber.getText() + "','" + CVC.getText() + "','" +
 	                    		ExpireDate.getText()+ "','" + Amount.getText() + "','" + CardName.getText() + "','" + Package_name.getText() + "')";
-	                    JOptionPane.showMessageDialog(null, "Payment Successfull");
+	                    JOptionPane.showMessageDialog(null, "Payment Successfull..\n Thank you for visiting :).. ");
 	                    setVisible(false);
 	                    Statement sta = connection.createStatement();
  	                    int x = sta.executeUpdate(query);
